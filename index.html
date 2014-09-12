@@ -299,6 +299,9 @@ Bugs:
                     if (chosenImage.water){
                         loop.volume(0.1);    
                     }
+                    else{
+                        loop.volume(0.0);
+                    }
                     document.getElementById("volume-img").src="resources/img/vol-mid.png";
                     soundOn = false;                       
                 }
@@ -316,6 +319,9 @@ Bugs:
                         store.set("user-music","");
                         if (chosenImage.water){
                             loop.volume(0.1);
+                        }
+                        else{
+                            loop.volume(0);
                         }
                         loop2.volume(0.3);
                         soundOn = true;
