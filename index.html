@@ -199,6 +199,9 @@ Bugs:
         loop.addUri("resources/aud/water.mp3", 8000, "water");        
 
         $(document).ready(function(){                              
+            $(".left").hide(0);
+            $(".right").hide(0);
+
             /* Choose image */
             var imageArray = [
                 // {name:'fire.gif', water:true},
@@ -445,9 +448,9 @@ Bugs:
 
         $(window).load(function(){                      
             /* Fade in gif and journal. */                                    
-            $(".left").hide(0).delay(1000).fadeIn(1000); 
+            $(".left").delay(1000).fadeIn(1000); 
             $("#loading-left").delay(500).fadeOut(500);
-            $(".right").hide(0).delay(1000).fadeIn(1000); 
+            $(".right").delay(1000).fadeIn(1000); 
             $("#journal").focus();  // poor man's focus: index.html#journal            
         });
     
