@@ -1,0 +1,83 @@
+ html, body{
+        font-family:Avenir,Futura,sans-serif;
+    }
+    a{
+        cursor: pointer;
+    }
+    #journal
+    {        
+        border: none;
+        outline: none !important;    
+        width:100%;       
+        height:580px; 
+        overflow-y: scroll;        
+        font-size: 20px;
+    }
+    .rounded {
+     -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    }
+    .left{        
+        position: absolute;
+        width:40%;
+        max-width: 393px;
+        height:700px;        
+        -moz-box-shadow: 1px 2px 20px rgba(0,0,0,.8);
+        -webkit-box-shadow: 1px 2px 20px rgba(0,0,0,.8);
+        box-shadow: 1px 2px 20px rgba(0,0,0,.8);
+    }
+    .right{                
+        float: left;
+        margin-left:40%;   
+        position:absolute;                
+        padding:20px;        
+    }    
+    @media screen and (min-width: 980px) {
+        .right {
+            margin-left: 393px;
+            width:60%;
+        }
+    }
+    .foot a{
+        margin-right: 10px;                
+        font-size: 16px;
+    }
+    .foot a:hover{
+        text-decoration: none;
+    }
+
+    #logo {
+        color:#aaa;
+        
+    }
+    #logo:hover{
+        text-decoration: none;
+        color:#777;
+        cursor: pointer;
+    }
+    #return-home{
+        border: 1px solid #000;
+        padding: 5px 10px;     
+        background: #ddd;   
+    }
+    #return-home:hover{
+        text-decoration: none;
+        background: #eee; 
+    }
+    .icons, .chooseRandom{
+        width:60px;
+        height:60px;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+    .chooseRandom{
+        padding-top: 20px;
+        background: black;
+        display: inline-block;
+        color: #ddd;
+        width:60px;
+        height:60px;
+        vertical-align: middle;
+    }

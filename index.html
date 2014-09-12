@@ -1,0 +1,445 @@
+<!-- 
+Bugs: 
+ * sound should be stored as on or off ***
+ * contact - simpleform *** 
+ * bold, italic, etc.? *** 
+        - make tinymce, but be able to change this in settings. < possibly make tinymce turn on-able.
+ * song probably shouldn't loop?  it should shuffle?
+ * water flow isn't working when user sets a photo
+-->
+<!DOCTYPE html>
+<head>
+    <title>WriterSpace</title>
+    <meta charset="utf-8">
+    <meta name="description" content="WriterSpace is a solace for those who need a place to think.">
+    <meta name="keywords" content="writers, writing, productivity, meditation">    
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>    
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />        
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">    
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    <script type="text/javascript" src="resources/js/store.min.js"></script>
+    <script type="text/javascript" src="resources/js/SeamlessLoop.js"></script>
+</head>
+<body>    
+    <div id="about-dialog" style="display:none;text-align:center;" title="Writer Space">
+        <h3>writer space</h3>
+        <p>by c.e. hermes</p>  
+        <span style="font-size:12px;">
+            <p>Made with Creative Commons music and publicly shared cinemagraphs, WriterSpace is meant to be a solace for those who need a place to think.</p>              
+            <p>These days, distractions are everywhere.  It's getting harder to separate ourselves from the outside world and listen to our inner minds.  As a writer, I created WriterSpace because I needed a peaceful environment for my work - one where I could escape.</p>
+            <p>I hope you enjoy this space as much as I do.  Your work and personal settings are saved in local browser storage, so you can come back to edit anytime.  Just in case, be sure to save a backup copy as well.</p>
+            <p>Thanks for stopping by.</p>
+        </span>
+        <p>&copy 2014</p>
+    </div>
+    <div id="settings-dialog" style="display:none;text-align:center;" title="Settings">        
+        <span style="font-size:12px;">
+            <p>Choose your default image:</p>
+            <div class="chooseRandom rounded">random</div>
+            <img src="resources/icons/bear-in-water.jpg" class="icons rounded" alt="Marinus/bear-in-water.gif"></img>
+            <img src="resources/icons/cabin-in-snow.jpg" class="icons rounded" alt="Lockie/cabin-in-snow.gif"></img>
+            <img src="resources/icons/cloud-forest.jpg" class="icons rounded" alt="Marinus/cloud-forest.gif"></img>
+            <img src="resources/icons/coffee.jpg" class="icons rounded" alt="All-That-Is-Interesting/coffee.gif"></img>
+            <img src="resources/icons/iceland-lighthouse.jpg" class="icons rounded" alt="Marinus/iceland-lighthouse.gif"></img>
+            <img src="resources/icons/palace.jpg" class="icons rounded" alt="Marinus/palace.gif"></img>
+            <img src="resources/icons/pouring.jpg" class="icons rounded" alt="Marinus/pouring.gif"></img>
+            <img src="resources/icons/red-fox2.jpg" class="icons rounded" alt="Marinus/red-fox2.gif"></img>
+            <img src="resources/icons/tea_sm.jpg" class="icons rounded" alt="IanPhotography/tea_sm.gif"></img>        
+            <img src="resources/icons/burma-river.jpg" class="icons rounded" alt="Marinus/burma-river.gif"></img>        
+            <img src="resources/icons/candle.jpg" class="icons rounded" alt="Marinus/candle.gif"></img>        
+            <img src="resources/icons/frog-watches-water.jpg" class="icons rounded" alt="Marinus/frog-watches-water.gif"></img>
+            <img src="resources/icons/madagascar-sailboat.jpg" class="icons rounded" alt="Marinus/madagascar-sailboat.gif"></img>
+            <img src="resources/icons/mexican-bats.jpg" class="icons rounded" alt="Marinus/mexican-bats.gif"></img>                    
+            <!-- <p>Or upload your own (image should be at least 393x700):</p> -->
+            <!-- <p>Music: <input id="user-music-checkbox" type="checkbox" value="1" checked></p>
+            <p>Sound of water flowing: <input type="checkbox" value="1" checked></p> -->
+            <!-- <p>Play ambient sound only (no music): <input id="ambient-only" type="checkbox" value="0"></p>    -->                  
+        </span>        
+    </div>
+    <div id="credits-dialog" style="display:none;padding:20px;" title="Credits">        
+            <span style="font-size:20px;">
+                <p>WriterSpace would not be possible without the shared work of talented artists, developers, and musicians.  If you have a moment, check out these incredible people and their websites.  Their work is really worth your time.</p><br>
+                <p style="text-align: center;"><a id="return-home" class="rounded">I'm done - Take me back to my journal.</a></p><br><hr>
+            </span>
+            <p><b>Code Libraries:</b></p>
+            <ul>
+                <a href="https://github.com/Hivenfour/SeamlessLoop"><li>SeamlessLoop, by Hivenfour</li></a>      
+                <a href="https://github.com/marcuswestin/store.js/"><li>store.js, by Marcus Westin</li></a>                
+            </ul>
+            <p>
+            <p><b>Images (names are descriptive if unspecified):</b></p>
+            <ul>
+                <!-- Misc. -->
+                <a href="http://all-that-is-interesting.com/cinemagraphs/5"><li>Coffee, via All That is Interesting</li></a>
+                <a href="http://ianphotography.asia/wp-content/uploads/2012/04/Cinemagraphy-3-Vertical.gif"><li>Tea, by Ian Photography</li></a>
+
+                <!-- Wasifio -->
+                <a href="http://wasifio.tumblr.com/post/45313953056"><li>Multnomah Falls in Oregon (Waterfall 3), by Wasif(io)</li></a>
+                <a href="http://wasifio.tumblr.com/post/35603733586"><li>Waterfall 9, by Wasif(io)</li></a>
+                <a href="http://wasifio.tumblr.com/post/44678463972"><li>Snow Waterfall, by Wasif(io)</li></a>
+
+                <!-- Lockie -->
+                <a href="http://totesyourmate.tumblr.com/post/43006358117/skala-gif"><li>Skala (Cabin in Snow), by Lachlan Burrows ("Lockie")</li></a>
+                <a href="http://totesyourmate.tumblr.com/post/48927251455/snow-owl-gif-by-totesyourmate"><li>Snow Owl, by Lachlan Burrows ("Lockie")</li></a>
+                <a href="http://totesyourmate.tumblr.com/post/48516959521/greenland-gif-by-totesyourmate"><li>Watching Fire in Greenland, by Lachlan Burrows ("Lockie")</li></a>
+                <a href="http://totesyourmate.tumblr.com/post/41701324614/skogafoss-gif"><li>Skogafoss (Waterfall 7), by Lachlan Burrows ("Lockie")</li></a>
+                <a href="http://totesyourmate.tumblr.com/post/47780863042/ofaerufoss-gif"><li>Ofaerufoss (Waterfall 8), by Lachlan Burrows ("Lockie")</li></a>
+
+                <!-- Marinus -->
+                <li>Lake Ontario, by <a href="http://headlikeanorange.tumblr.com/post/45939087333">Marinus</a> and <a href="http://vimeo.com/31412660">Fred Kellerman</a></li>
+                <li>Sunset, by <a href="http://headlikeanorange.tumblr.com/post/30472713001">Marinus</a> via BBC</li>
+                <li>Pouring, by <a href="http://headlikeanorange.tumblr.com/post/54372161233">Marinus</a> via BBC Ganges</li></a>                
+                <li>Iguazu Falls, on the border of Argentina and Brazil. (Waterfall 6), by <a href="http://headlikeanorange.tumblr.com/post/44654771537">Marinus</a> and <a href="http://vimeo.com/60059772">Protyreus</a></li>
+                <li>Campfire, by <a href="http://headlikeanorange.tumblr.com/post/32755411032">Marinus</a> and <a href="http://vimeo.com/50534328">Santler86</a></li>             
+                <li>Cloud Forest, by <a href="http://headlikeanorange.tumblr.com/post/45445655011">Marinus</a> via BBC Secrets of our Living Planet</li>                
+                <li>Dust Devil, by <a href="http://headlikeanorange.tumblr.com/post/50444986660">Marinus</a> via BBC Africa</li></a> 
+                <li>Taj Mahal, by <a href="http://headlikeanorange.tumblr.com/post/51585009671">Marinus</a> via BBC Ganges</li></a>                
+                <li>Sahara, by <a href="http://headlikeanorange.tumblr.com/post/42129474325">Marinus</a> via BBC Africa</li></a>                
+                <li>North Pole, by <a href="http://headlikeanorange.tumblr.com/post/43745759022">Marinus</a> via BBC Nature</li></a>
+                <a href="http://headlikeanorange.tumblr.com/post/81218255732"><li>Daisy, by Marinus</li></a>                
+                <a href="http://headlikeanorange.tumblr.com/post/80912054555"><li>Roderveld, the Netherlands, by Marinus</li></a>
+                <li>Iceland, by <a href="http://headlikeanorange.tumblr.com/post/76884884546">Marinus</a> and <a href="http://vimeo.com/39972898">Cluster Films</a></li>
+                <li>Burma River, by <a href="http://headlikeanorange.tumblr.com/post/70721269726">Marinus</a> via BBC Wild Burma</li>
+                <li>Snow on Plants, by <a href="http://38.media.tumblr.com/0d83e04a37e47982b00ebfe1a9b74a74/tumblr_mm0or2n1yC1r4zr2vo1_r1_500.gif">Marinus</a> via BBC A Year in the Wild</li>
+                <li>Beach Campfire in Palawan, Philippines, by <a href="http://headlikeanorange.tumblr.com/post/63761750057">Marinus</a> via <a href="http://vimeo.com/ondemand/campfireonthebeachvideo/74554793">Relaxing Nature HD Videos</a></li>
+                <!-- <li>Fox Hunting Mice in the Snow, by <a href="http://headlikeanorange.tumblr.com/post/64893252198">Marinus</a> via North America - Discovery Channel</li>    -->
+                <li>Red Fox, by <a href="http://headlikeanorange.tumblr.com/about">Marinus</a> via North America - Discovery Channel</li>                
+                <li>Stream in Adirondack Mountains, New York, by <a href="http://headlikeanorange.tumblr.com/post/61996308137">Marinus</a> and <a href="http://vimeo.com/4973712">Paul Frederick</a></li>   
+                <li>Indian Ocean, by <a href="http://headlikeanorange.tumblr.com/post/44566630679">Marinus</a> via BBC Wild Arabia</li>
+                <li>Mountain Clouds, by <a href="http://headlikeanorange.tumblr.com/post/44400194968">Marinus</a> via BBC Wild Arabia</li>
+                <li>Bedouin nomads in the Empty Quarter desert, by <a href="http://headlikeanorange.tumblr.com/post/43929474327">Marinus</a> via BBC Wild Arabia</li>
+                <li>Mexican River, by <a href="http://headlikeanorange.tumblr.com/post/44242680612">Marinus</a> via BBC Wonders of Life</li>
+                <li>A sailboat off the coast of Madagascar, by <a href="http://headlikeanorange.tumblr.com/post/43027504931">Marinus</a> via BBC Wonders of Life</li>
+                <li>Mostar, Bosnia and Herzegovina, by <a href="http://headlikeanorange.tumblr.com/post/43027504931">Marinus</a> and <a href="http://vimeo.com/52546900">DGA Productions</a></li>
+                <li>Mexican free-tailed bats, by <a href="http://headlikeanorange.tumblr.com/post/45867548195">Marinus</a> via Untamed Americas - NGC</li>
+                <li>Crete, Greece, by <a href="http://headlikeanorange.tumblr.com/post/51910671248">Marinus</a> and <a href="http://vimeo.com/53106350">Gunther Machu</a></li>
+                <li>Crete, Greece 2, by <a href="http://headlikeanorange.tumblr.com/post/51910671248">Marinus</a> and <a href="http://vimeo.com/53106350">Gunther Machu</a></li>
+                <li>A polar bear eating from a whale carcass, by <a href="http://headlikeanorange.tumblr.com/post/50036002396">Marinus</a> via BBC The Polar Bear Family &amp; Me</li>
+                <li>Himalayan Waterfall, by <a href="http://headlikeanorange.tumblr.com/post/47642871467">Marinus</a> via BBC Ganges</li>
+                <li>Iceland Lighthouse, by <a href="http://headlikeanorange.tumblr.com/post/58359529241">Marinus</a> via When Björk Met Attenborough</li>
+                <li>Bear in Water, by <a href="http://headlikeanorange.tumblr.com/post/55113486740">Marinus</a> via BBC Natural World</li>
+                <li>Frog Watches Water, by <a href="http://headlikeanorange.tumblr.com/post/41223180897">Marinus</a> via BBC Africa</li>
+                <li>Candle, by <a href="http://headlikeanorange.tumblr.com/post/34519710756">Marinus</a> and <a href="http://vimeo.com/50495049">Ally Burnett</a></li>
+
+                <!-- More -->
+                <!-- 
+                    http://headlikeanorange.tumblr.com/post/41891082532
+                    http://headlikeanorange.tumblr.com/post/39246015446
+                    http://headlikeanorange.tumblr.com/post/38335471098
+                    http://headlikeanorange.tumblr.com/post/38245796634
+                    http://headlikeanorange.tumblr.com/post/36903888882
+                    http://headlikeanorange.tumblr.com/post/36457481441
+                    http://headlikeanorange.tumblr.com/post/36236427976                    
+                    http://headlikeanorange.tumblr.com/post/34184355978
+                    http://headlikeanorange.tumblr.com/post/34117160636
+                    http://headlikeanorange.tumblr.com/post/44971220099
+                    http://headlikeanorange.tumblr.com/post/42783252748
+                    http://headlikeanorange.tumblr.com/post/49299387079
+                    http://headlikeanorange.tumblr.com/post/48143584952
+                    http://headlikeanorange.tumblr.com/post/47891476044
+                    http://headlikeanorange.tumblr.com/post/46961739597
+                    http://headlikeanorange.tumblr.com/post/54127241584
+                    http://headlikeanorange.tumblr.com/post/53384316428
+                    http://headlikeanorange.tumblr.com/post/52813998430
+                    http://headlikeanorange.tumblr.com/post/54941276460
+                    http://headlikeanorange.tumblr.com/post/61614576206
+                    http://headlikeanorange.tumblr.com/post/60780025487
+                    http://headlikeanorange.tumblr.com/post/59708565144
+                 -->
+                
+            </ul>
+            <p><b>Music:</b></p>
+            <ul>
+                <a href="https://www.youtube.com/watch?v=B8997dEltvg"><li>Chilleminor Piano, by CipoTCX</li></a>
+                <a href="https://www.youtube.com/watch?v=SXpVTaMTU7A"><li>20 Piano, by CipoTCX</li></a>
+                <a href="http://www.youtube.com/watch?v=FNnuR0ncVOU"><li>Nocturne - earth at your feet, by CipoTCX</li></a>
+
+                <li><a href="http://ccmixter.org/files/The3amAssociation/14414">(PIANO) A minor improvisation on Sunday</a>, by <a href="http://ccmixter.org/people/The3amAssociation">The3amAssociation</a></li>
+
+
+                <a href="http://incompetech.com/music/royalty-free/"><li>Cool Vibes, by Kevin MacLeod</li></a>
+                <a href="http://incompetech.com/music/royalty-free/"><li>Trio for Piano, Violin, and Viola, by Kevin MacLeod</li></a>
+                <a href="http://incompetech.com/music/royalty-free/"><li>Trio for Piano, Cello, and Clarinet, by Kevin MacLeod</li></a>
+                <a href="http://incompetech.com/music/royalty-free/"><li>Sad Trio, by Kevin MacLeod</li></a>
+                <a href="http://incompetech.com/music/royalty-free/"><li>Music for Manatees, by Kevin MacLeod</li></a>
+
+                <li>Waterflow Loop, by c.e. hermes</li>
+
+            </ul>              
+    </div>
+    <div id="main-content" style="display:inline">
+        <div class="left"></div>
+        <div class="right">
+            <textarea class="rounded" id="journal" placeholder="Write your thoughts here."></textarea>            
+            <div class="foot">
+                <span>
+                    <a id="logo" style="cursor:default;">writer space</a>
+                    <a href="https://twitter.com/CEHermes"><img src="resources/img/twitter.png" alt="twitter" width="20px"></a>
+                    <a id="mute-link"><img id="volume-img" src="resources/img/vol-on.png" alt="mute sound" width="20px"></a>
+                    
+                </span>
+                <span style="float:right;">
+                    <a href="#" id="about-link">about</a>
+                    <a href="#" id="settings-link">settings</a>
+                    <a href="#" id="credits-link">credits</a>                
+                </span>
+            </div>
+        </div>
+    </div>
+    <div>
+    <script type="text/javascript">
+
+        var soundOn = true;              
+        /* Seamless Loop from Hivenfour (https://github.com/Hivenfour/SeamlessLoop). */
+        var loop = new SeamlessLoop();            
+        var loop2 = new SeamlessLoop();  
+        loop.addUri("resources/aud/water.mp3", 8000, "water");
+
+        $(document).ready(function(){                      
+            /* Fade in journal. */            
+            $(".right").hide(0).fadeIn(1000); 
+            $("#journal").focus();  // poor man's focus: index.html#journal
+            // $("#journal").richtextarea();
+
+            /* Choose image */
+            var imageArray = [
+                // {name:'fire.gif', water:true},
+                // {name:'autumn-stars.gif', water:false},                
+                // {name:'waterfall4.gif', water:true},
+                // {name:'sand.gif', water:false},
+                
+                {name:'All-That-Is-Interesting/coffee.gif', water:false},
+                {name:'IanPhotography/tea_sm.gif', water:false},
+                
+                {name:'Wasifio/snow-waterfall.gif', water:true},
+                {name:'Wasifio/waterfall3.gif', water:true},
+                {name:'Wasifio/waterfall9.gif', water:true},
+
+                {name:'Lockie/cabin-in-snow.gif', water:false},
+                {name:'Lockie/snow-owl.gif', water:false},
+                {name:'Lockie/waterfall7.gif', water:true},                
+                {name:'Lockie/waterfall8.gif', water:true},                
+                {name:'Lockie/watching-fire.gif', water:false},                     
+
+                {name:'Marinus/campfire.gif', water:false},
+                {name:'Marinus/lake-ontario.gif', water:true},
+                {name:'Marinus/dust-storm.gif', water:false},                                
+                {name:'Marinus/waterfall6.gif', water:true},                
+                {name:'Marinus/pouring.gif', water:true},
+                {name:'Marinus/sahara.gif', water:false},
+                {name:'Marinus/north-pole.gif', water:false},
+                {name:'Marinus/sunset-water.gif', water:false}, 
+                {name:'Marinus/palace.gif', water:true},
+                {name:'Marinus/cloud-forest.gif', water:false},                   
+                {name:'Marinus/snow-on-plants.gif', water:false},                    
+                {name:'Marinus/burma-river.gif', water:true},                        
+                {name:'Marinus/Iceland.gif', water:true},                        
+                {name:'Marinus/daisy.gif', water:false},                             
+                {name:'Marinus/Roderveld-the-Netherlands.gif', water:true},    
+                {name:'Marinus/Palawan-Philippines-beach-campfire.gif', water:true},
+                // {name:'Marinus/fox-hunting-in-snow.gif', water:false},          
+                {name:'Marinus/red-fox2.gif', water:false},                         
+                {name:'Marinus/Adirondack-Mountains-Stream.gif', water:true}, 
+                {name:'Marinus/indian-ocean.gif', water:true}, 
+                {name:'Marinus/mountain-clouds.gif', water:false}, 
+                {name:'Marinus/mexican-river.gif', water:true}, 
+                {name:'Marinus/bedouin-nomads.gif', water:false}, 
+                {name:'Marinus/mostar-bosnia.gif', water:true}, 
+                {name:'Marinus/madagascar-sailboat.gif', water:true}, 
+                {name:'Marinus/mexican-bats.gif', water:false}, 
+                {name:'Marinus/crete-greece.gif', water:true}, 
+                {name:'Marinus/crete-greece2.gif', water:true}, 
+                {name:'Marinus/polar-bear.gif', water:true}, 
+                {name:'Marinus/himalayan-waterfall.gif', water:true}, 
+                {name:'Marinus/iceland-lighthouse.gif', water:true}, 
+                {name:'Marinus/bear-in-water.gif', water:true}, 
+                {name:'Marinus/frog-watches-water.gif', water:true}, 
+                {name:'Marinus/candle.gif', water:false},     
+            ];
+            var chosenImage = chooseRandomImg(imageArray);
+
+            /* Choose music */
+            var chosenMusic = chooseRandomMusic();                
+
+            loop2.addUri("resources/aud/" + chosenMusic.name, chosenMusic.length, "piano");
+            loop.callback(soundsLoaded);
+
+            function soundsLoaded() {      
+                loop.start("water");                    
+                if (chosenImage.water && store.get("user-music")!="off"){
+                    loop.volume(0.1);                    
+                }                      
+                else{
+                    loop.volume(0);  
+                }                    
+                loop2.start("piano");                
+                if (store.get("user-music")=="off" || store.get("user-ambient-only")=="on"){
+                    loop2.volume(0);                     
+                    if (store.get("user-ambient-only")=="on"){
+                        document.getElementById("volume-img").src="resources/img/vol-mid.png";
+                    }
+                    else{
+                        document.getElementById("volume-img").src="resources/img/vol-off.png";
+                    }
+                }
+                else{
+                    loop2.volume(0.3);
+                }
+                
+            };                 
+
+            $('#mute-link').click(function(){
+                if (soundOn && store.get("user-ambient-only")!="on" && store.get("user-music")!="off"){
+                    // change to sound on mid (ambient only)                    
+                    store.set("user-ambient-only","on");  
+                    loop2.volume(0);
+                    if (chosenImage.water){
+                        loop.volume(0.1);    
+                    }
+                    document.getElementById("volume-img").src="resources/img/vol-mid.png";
+                    soundOn = false;                       
+                }
+                else{
+                    if (store.get("user-ambient-only")=="on"){
+                        // change to sound off
+                        store.set("user-ambient-only","");  
+                        store.set("user-music","off");
+                        loop.volume(0);                        
+                        loop2.volume(0);                                               
+                        document.getElementById("volume-img").src="resources/img/vol-off.png";
+                    }
+                    else{
+                        // change to sound on high
+                        store.set("user-music","");
+                        if (chosenImage.water){
+                            loop.volume(0.1);
+                        }
+                        loop2.volume(0.3);
+                        soundOn = true;
+                        document.getElementById("volume-img").src="resources/img/vol-on.png";
+                    }
+                }
+                
+            });
+
+
+            $('.icons').click(function(){
+                store.set('user-image',$(this).attr('alt'));                
+                chosenImage = getAssocElem(imageArray, store.get('user-image'));
+                $(".left").css("background", "url('resources/gif/" + chosenImage.name + "') no-repeat"); 
+                $(this).fadeOut(200).fadeIn(200); 
+                if (chosenImage.water && store.get("user-music")!="off"){
+                    loop.volume(0.1);
+                }
+                else{
+                    loop.volume(0);
+                }
+
+            });
+            $('.chooseRandom').click(function(){                
+                store.set('user-image',"");                               
+                $(this).fadeOut(200).fadeIn(200);
+            });
+
+            $("#journal").keyup(function(event) {                 
+                store.set('writing', $("#journal").val());                
+            });
+            $("#journal").val(store.get('writing')); 
+
+            $('#about-link').click(function(){
+               $('#about-dialog').dialog({
+                modal:true,
+                dialogClass: "alert",
+                draggable: false,
+                resizable: false,
+                position: ['center', 'center'],                
+                width: 400,
+                dialogClass: 'ui-dialog-osx',
+                buttons: {
+                    "OK": function() {
+                        $(this).dialog("close");
+                    }
+                }
+            });   
+           });
+
+           $('#settings-link').click(function(){                                
+                loop.callback(soundsLoaded);         
+               $('#settings-dialog').dialog({
+                modal:true,
+                dialogClass: "alert",
+                draggable: false,
+                resizable: false,
+                position: ['center', 'center'],                
+                width: 400,
+                dialogClass: 'ui-dialog-osx',
+                buttons: {
+                    "Apply": function() {                        
+                        $(this).dialog("close");
+                    }
+                }
+            });   
+           });
+
+            $('#credits-link').click(function(){
+                $("#main-content").hide();
+                $("#credits-dialog").fadeIn(1000);       
+            });
+
+            $('#return-home').click(function(){
+                $("#main-content").fadeIn(1000);
+                $("#credits-dialog").hide();       
+            });
+
+            /* Searches image array for specified image. */
+            function getAssocElem(data, imageName){
+                for(var i=0;i<data.length;i++){ 
+                    if(data[i].name==imageName) 
+                        return data[i];
+                }
+            }
+            /* Chooses music to play. */
+            function chooseRandomMusic(){
+
+                var musicArray = [
+                    {name:'The3amAssociation/(PIANO)_A_minor_improvisation_on_Sunday.mp3', length:231000},
+
+                    {name:'CipoTCX/20_Piano_(Creative Commons).mp3', length:224000},
+                    {name:'CipoTCX/Chilleminor_Piano_(Creative Commons).mp3', length:349000},
+                    {name:'CipoTCX/Nocturne-earth-at-your-feet.mp3', length:246000},
+
+                    {name:'KevinMacLeod/Trio-for-Piano-Violin-and-Viola.mp3', length:84000},
+                    {name:'KevinMacLeod/Trio-for-Piano-Cello-and-Clarinet.mp3', length:159000},
+                    {name:'KevinMacLeod/Sad_Trio.mp3', length:251000},
+                    {name:'KevinMacLeod/Cool_Vibes.mp3', length:218000},
+                    {name:'KevinMacLeod/Music-for-Manatees.mp3', length:218000},
+                                  
+                ];            
+
+                var randomNumber = Math.floor(Math.random()*musicArray.length);
+
+                return musicArray[randomNumber];
+            }
+
+            /* Chooses image to display (random unless specified). */
+            function chooseRandomImg(imageArray){   
+                var chosenImage;             
+                if (store.get('user-image') != ""){
+                    chosenImage = getAssocElem(imageArray, store.get('user-image'));
+                    $(".left").css("background", "url('resources/gif/" + chosenImage.name + "') no-repeat");
+                }   
+                else{
+
+                    var randomNumber2 = Math.floor(Math.random()*imageArray.length);
+
+                    chosenImage = imageArray[randomNumber2];    
+                    $(".left").css("background", "url('resources/gif/" + chosenImage.name + "') no-repeat");
+                }                   
+                return chosenImage;
+            }
+        });
+    
+    </script>
+</body>
