@@ -198,7 +198,8 @@ Bugs:
         loop.addUri("resources/aud/water.mp3", 8000, "water");
 
         $(document).ready(function(){                      
-            /* Fade in journal. */            
+            /* Fade in gif and journal. */            
+            $(".left").hide(0).fadeIn(1000); 
             $(".right").hide(0).fadeIn(1000); 
             $("#journal").focus();  // poor man's focus: index.html#journal
             // $("#journal").richtextarea();
