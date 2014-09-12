@@ -169,8 +169,9 @@ Bugs:
 
             </ul>              
     </div>
-    <div id="main-content" style="display:inline">
+    <div id="main-content" style="display:inline">        
         <div class="left"></div>
+        <div id="loading-left">Loading environment...</div>
         <div class="right">
             <textarea class="rounded" id="journal" placeholder="Write your thoughts here."></textarea>            
             <div class="foot">
@@ -195,15 +196,9 @@ Bugs:
         /* Seamless Loop from Hivenfour (https://github.com/Hivenfour/SeamlessLoop). */
         var loop = new SeamlessLoop();            
         var loop2 = new SeamlessLoop();  
-        loop.addUri("resources/aud/water.mp3", 8000, "water");
+        loop.addUri("resources/aud/water.mp3", 8000, "water");        
 
-        $(document).ready(function(){                      
-            /* Fade in gif and journal. */            
-            $(".left").hide(0).fadeIn(1000); 
-            $(".right").hide(0).fadeIn(1000); 
-            $("#journal").focus();  // poor man's focus: index.html#journal
-            // $("#journal").richtextarea();
-
+        $(document).ready(function(){                              
             /* Choose image */
             var imageArray = [
                 // {name:'fire.gif', water:true},
@@ -446,6 +441,14 @@ Bugs:
                 }                   
                 return chosenImage;
             }
+        });
+
+        $(window).load(function(){                      
+            /* Fade in gif and journal. */                                    
+            $(".left").hide(0).delay(1000).fadeIn(1000); 
+            $("#loading-left").delay(500).fadeOut(500);
+            $(".right").hide(0).delay(1000).fadeIn(1000); 
+            $("#journal").focus();  // poor man's focus: index.html#journal            
         });
     
     </script>

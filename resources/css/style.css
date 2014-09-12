@@ -81,3 +81,9 @@
         height:60px;
         vertical-align: middle;
     }
+    #loading-left{
+        font-size: 30px;
+        padding-top: 30px;
+        text-align: center;
+        color:#777;
+    }
