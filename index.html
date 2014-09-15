@@ -368,7 +368,7 @@
             $('.icons').click(function(){
                 store.set('user-image',$(this).attr('alt'));                
                 chosenImage = getAssocElem(imageArray, store.get('user-image'));
-                $(".left").css("background", "url('resources/gif/" + chosenImage.name + "') no-repeat"); 
+                setImage(chosenImage.name); 
                 $(this).fadeOut(200).fadeIn(200); 
                 if (chosenImage.water && store.get("user-music")!="off"){
                     loop.volume(0.1);
@@ -480,18 +480,22 @@
                 var chosenImage;             
                 if (store.get('user-image') != "" && store.get('user-image')){
                     chosenImage = getAssocElem(imageArray, store.get('user-image'));
-                    $(".left").css("background", "url('resources/gif/" + chosenImage.name + "') no-repeat");
+                    setImage(chosenImage.name);
                 }   
                 else{
 
                     var randomNumber2 = Math.floor(Math.random()*imageArray.length);
 
                     chosenImage = imageArray[randomNumber2];    
-                    $(".left").css("background", "url('resources/gif/" + chosenImage.name + "') no-repeat");
+                    setImage(chosenImage.name);
                 }                   
                 return chosenImage;
             }
         });
+
+        function setImage(imageName) {
+            $(".left").css("background-image",  "url('resources/gif/" + imageName + "')");
+        }
 
         $(window).load(function(){                      
             /* Fade in gif and journal. */                                    
