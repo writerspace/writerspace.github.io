@@ -182,8 +182,13 @@
         var soundOn = true;              
         /* Seamless Loop from Hivenfour (https://github.com/Hivenfour/SeamlessLoop). */
         var loop = new SeamlessLoop();            
-        var loop2 = new SeamlessLoop();  
-        loop.addUri("resources/aud/water.mp3", 8000, "water");        
+        var loop2 = new SeamlessLoop(); 
+        var loop3 = new SeamlessLoop(); 
+        var loop4 = new SeamlessLoop(); 
+        
+        loop.addUri("resources/aud/CEHermes/water.mp3", 8000, "water");        
+        loop3.addUri("resources/aud/CEHermes/mexican-birds.wav", 18000, "birds");
+        loop4.addUri("resources/aud/CEHermes/sizzle-rain.wav", 4000, "rain");
 
         $(document).ready(function(){                              
             $(".left").hide(0);
@@ -252,13 +257,31 @@
             loop.callback(soundsLoaded);
 
             function soundsLoaded() {      
-                loop.start("water");                    
+                loop.start("water");     
+                                            
                 if (chosenImage.water && store.get("user-music")!="off"){
-                    loop.volume(0.1);                    
-                }                      
+                    loop.volume(0.1);                           
+                }                         
                 else{
-                    loop.volume(0);  
-                }                    
+                    loop.volume(0);                          
+                }      
+
+                loop3.start("birds");
+                if (chosenImage.birds && store.get("user-music")!="off"){
+                    loop3.volume(0.1);
+                }
+                else{
+                    loop3.volume(0);
+                }
+
+                loop4.start("rain");
+                if (chosenImage.rain && store.get("user-music")!="off"){
+                    loop4.volume(0.2);
+                }
+                else{
+                    loop4.volume(0);
+                }
+                               
                 loop2.start("piano");                
                 if (store.get("user-music")=="off" || store.get("user-ambient-only")=="on"){
                     loop2.volume(0);                     
@@ -286,6 +309,18 @@
                     else{
                         loop.volume(0.0);
                     }
+                    if (chosenImage.birds){
+                        loop3.volume(0.1);
+                    }
+                    else{
+                        loop3.volume(0);
+                    }
+                    if (chosenImage.rain){
+                        loop4.volume(0.2);
+                    }
+                    else{
+                        loop4.volume(0);
+                    }
                     document.getElementById("volume-img").src="resources/img/vol-mid.png";
                     soundOn = false;                       
                 }
@@ -295,7 +330,9 @@
                         store.set("user-ambient-only","");  
                         store.set("user-music","off");
                         loop.volume(0);                        
-                        loop2.volume(0);                                               
+                        loop2.volume(0);
+                        loop3.volume(0);     
+                        loop4.volume(0);                                               
                         document.getElementById("volume-img").src="resources/img/vol-off.png";
                     }
                     else{
@@ -306,6 +343,18 @@
                         }
                         else{
                             loop.volume(0);
+                        }
+                        if (chosenImage.birds){
+                            loop3.volume(0.1);
+                        }
+                        else{
+                            loop3.volume(0);
+                        }
+                        if (chosenImage.rain){
+                            loop4.volume(0.2);
+                        }
+                        else{
+                            loop4.volume(0);
                         }
                         loop2.volume(0.3);
                         soundOn = true;
@@ -326,6 +375,18 @@
                 }
                 else{
                     loop.volume(0);
+                }
+                if (chosenImage.birds && store.get("user-music")!="off"){
+                    loop3.volume(0.1);
+                }
+                else{
+                    loop3.volume(0);
+                }
+                if (chosenImage.rain && store.get("user-music")!="off"){
+                    loop4.volume(0.2);
+                }
+                else{
+                    loop4.volume(0);
                 }
 
             });
